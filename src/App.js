@@ -40,6 +40,7 @@ class App extends Component {
             Balance: {formatPrice(this.props.balance)}
           </h3>
           <p>Overdraft limit: {formatPrice(this.props.overdraftLimit)}</p>
+          <p>Account ceiling: {formatPrice(this.props.spendingCeiling)}</p>
         </div>
 
         <div className="notificationContainer">

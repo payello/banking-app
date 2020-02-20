@@ -40,7 +40,17 @@ h1 {
   flex-wrap: wrap;
 }
 
-.notificationContainer h3 {
+.notificationContainer h3,
+.notificationContainer p {
   width: 100%;
   text-align: center;
+}
+
+.notificationContainer p {
+  margin: 0;
+  line-height: 2rem;
+}
+
+.notificationContainer p:last-child {
+  margin-bottom: 2rem;
 }
