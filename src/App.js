@@ -23,7 +23,6 @@ class App extends Component {
         refusedPayment: false
       });
     } else {
-      console.log("here");
       this.setState({
         refusedPayment: true
       });

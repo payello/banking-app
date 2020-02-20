@@ -27,13 +27,6 @@ h1 {
   min-height: 100vh;
 }
 
-.urgent {
-  background-color: lightpink;
-  color: red;
-  text-align: center;
-  margin: 2rem 0;
-}
-
 .noticationContainer {
   display: flex;
   justify-content: center;

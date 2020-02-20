@@ -1,9 +1,8 @@
 import React from "react";
+import Urgent from "../components/styles/Urgent";
 
 const RefusedPayment = () => (
-  <div className="urgent">
-    We are sorry but you cannot make any more withdrawals.
-  </div>
+  <Urgent>We are sorry but you cannot make any more withdrawals.</Urgent>
 );
 
 export default RefusedPayment;
