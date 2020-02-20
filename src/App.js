@@ -35,13 +35,14 @@ class App extends Component {
     return (
       <div className="container">
         <h1>Peter's banking app.</h1>
-        <div className="noticationContainer">
+        <div className="notificationContainer">
           <h3 style={{ color: this.props.balance < 0 ? "red" : "green" }}>
             Balance: {formatPrice(this.props.balance)}
           </h3>
+          <p>Overdraft limit: {formatPrice(this.props.overdraftLimit)}</p>
         </div>
 
-        <div className="noticationContainer">
+        <div className="notificationContainer">
           {this.props.balance > this.props.spendingCeiling
             ? `You've saved over ${formatPrice(
                 this.props.spendingCeiling
