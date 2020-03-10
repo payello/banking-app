@@ -2,20 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Form from "./styles/Form";
+
 import FormContainer from "./styles/FormContainer";
+import handleTransaction from "./handleTransaction";
+
+const type = "deposit";
 
 class Deposit extends Component {
-  submitDeposit = e => {
-    e.preventDefault();
-    this.props.deposit(parseInt(this.state.amount) * 100);
-
-    e.currentTarget.reset();
-  };
-
   render() {
     return (
       <FormContainer>
-        <Form action="" onSubmit={this.submitDeposit}>
+        <Form
+          action=""
+          onSubmit={e => {
+            handleTransaction(e, this, type);
+          }}
+        >
           <label htmlFor="deposit">Make a deposit</label>
           <input
             type="number"

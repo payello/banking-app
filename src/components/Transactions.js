@@ -10,8 +10,8 @@ class Transactions extends Component {
         {this.props.trans}
         {this.props.transactions
           .sort((a, b) => b - a)
-          .map(transaction => (
-            <div className="transactionContainer">
+          .map((transaction, index) => (
+            <div key={index} className="transactionContainer">
               <div>
                 {transaction.transactionType === "deposit" ? (
                   <div className="amount">

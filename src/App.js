@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Deposit from "./components/Deposit";
 import { connect } from "react-redux";
-import { formatPrice, totalBalance } from "./helpers";
+import { formatPrice } from "./helpers";
 
+import handleTransaction from "./components/handleTransaction";
 import Overdraft from "./components/Overdraft";
 import RefusedPayment from "./components/RefusedPayment";
 import Transactions from "./components/Transactions";
@@ -11,26 +12,9 @@ import "./App.css";
 import Form from "./components/styles/Form";
 import FormContainer from "./components/styles/FormContainer";
 
+const type = "withdraw";
+
 class App extends Component {
-  submitWithdrawal = e => {
-    e.preventDefault();
-    if (
-      this.state.number <=
-      totalBalance(this.props.overdraftLimit, this.props.balance)
-    ) {
-      this.props.withdraw(parseInt(this.state.number) * 100);
-      this.setState({
-        refusedPayment: false
-      });
-    } else {
-      this.setState({
-        refusedPayment: true
-      });
-    }
-
-    e.currentTarget.reset();
-  };
-
   render() {
     return (
       <div className="container">
@@ -53,7 +37,12 @@ class App extends Component {
         {this.state && this.state.refusedPayment ? <RefusedPayment /> : ""}
         {this.props.balance < 0 ? <Overdraft /> : ""}
         <FormContainer>
-          <Form action="" onSubmit={this.submitWithdrawal}>
+          <Form
+            action=""
+            onSubmit={e => {
+              handleTransaction(e, this, type);
+            }}
+          >
             <label>Withdraw</label>
             <input
               type="number"
