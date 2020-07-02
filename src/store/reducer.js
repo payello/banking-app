@@ -3,7 +3,7 @@ const initState = {
   transactions: [],
   overdraftLimit: 25000,
   spendingCeiling: 400000,
-  refusedPayment: false
+  refusedPayment: false,
 };
 
 const transaction = (state = initState, action) => {
@@ -18,13 +18,12 @@ const transaction = (state = initState, action) => {
           date: new Date(),
           transactionType: "withdraw",
           amount: action.value,
-          newBalance: state.balance - action.value
+          newBalance: state.balance - action.value,
         }),
         overdraftLimit: state.overdraftLimit,
         spendingCeiling: state.spendingCeiling,
-        refusedPayment: state.refusedPayment
+        refusedPayment: state.refusedPayment,
       };
-    break;
 
     case "deposit":
       return {
@@ -34,13 +33,12 @@ const transaction = (state = initState, action) => {
           date: new Date(),
           transactionType: "deposit",
           amount: action.value,
-          newBalance: state.balance + action.value
+          newBalance: state.balance + action.value,
         }),
         overdraftLimit: state.overdraftLimit,
         spendingCeiling: state.spendingCeiling,
-        refusedPayment: state.refusedPayment
+        refusedPayment: state.refusedPayment,
       };
-    break;
     default:
   }
   return newState;
