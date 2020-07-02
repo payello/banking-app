@@ -3,12 +3,12 @@ const initState = {
   transactions: [],
   overdraftLimit: 25000,
   spendingCeiling: 400000,
-  refusedPayment: false
+  refusedPayment: false,
 };
 
 const transaction = (state = initState, action) => {
   const newState = { ...state };
-
+  console.log("action", action);
   switch (action.type) {
     case "withdraw":
       return {
@@ -18,13 +18,14 @@ const transaction = (state = initState, action) => {
           date: new Date(),
           transactionType: "withdraw",
           amount: action.value,
-          newBalance: state.balance - action.value
+          newBalance: state.balance - action.value,
+          desc: action.desc,
         }),
         overdraftLimit: state.overdraftLimit,
         spendingCeiling: state.spendingCeiling,
-        refusedPayment: state.refusedPayment
+        refusedPayment: state.refusedPayment,
       };
-    break;
+      break;
 
     case "deposit":
       return {
@@ -34,13 +35,14 @@ const transaction = (state = initState, action) => {
           date: new Date(),
           transactionType: "deposit",
           amount: action.value,
-          newBalance: state.balance + action.value
+          newBalance: state.balance + action.value,
+          desc: action.desc,
         }),
         overdraftLimit: state.overdraftLimit,
         spendingCeiling: state.spendingCeiling,
-        refusedPayment: state.refusedPayment
+        refusedPayment: state.refusedPayment,
       };
-    break;
+      break;
     default:
   }
   return newState;

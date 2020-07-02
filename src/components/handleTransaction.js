@@ -1,6 +1,7 @@
 import { totalBalance } from "../helpers";
 
 const handleTransaction = (e, context, type) => {
+  console.log("e", e, "context", context, "type", type);
   e.preventDefault();
   if (type === "withdraw") {
     if (
@@ -9,11 +10,11 @@ const handleTransaction = (e, context, type) => {
     ) {
       context.props.withdraw(parseFloat(context.state.number) * 100);
       context.setState({
-        refusedPayment: false
+        refusedPayment: false,
       });
     } else {
       context.setState({
-        refusedPayment: true
+        refusedPayment: true,
       });
     }
   } else if (type === "deposit") {

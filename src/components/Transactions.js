@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { formatPrice } from "../helpers";
+import changeDeposit from '../actionCreators/changeDeposit'
+import changeWithdraw from '../actionCreators/changeWithdraw'
 
 class Transactions extends Component {
   render() {
@@ -52,10 +54,20 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    deposit: amount => dispatch({ type: "deposit", value: amount })
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     deposit: (amount, desc) =>
+//       dispatch({ type: "deposit", value: amount, desc: desc })
+//   };
+// };
+
+const mapDispatchToProps = dispatch => ({
+  setDeposit(amount, description) {
+    dispatch(changeDeposit(amount, description))
+  },
+  setWithdraw(amount, description) {
+    dispatch(changeWithdraw(amount, description))
+  }
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

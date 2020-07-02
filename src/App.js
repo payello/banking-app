@@ -15,6 +15,11 @@ import FormContainer from "./components/styles/FormContainer";
 const type = "withdraw";
 
 class App extends Component {
+  // constructor() {
+  //   super();
+  //   // this.handleSubmit = this.handleSubmit.bind(this);
+  // }
+
   render() {
     return (
       <div className="container">
@@ -51,6 +56,12 @@ class App extends Component {
               step="0.01"
               required
             />
+            <input
+              type="text"
+              onChange={e => this.setState({ desc: e.target.value })}
+              placeholder="Transaction description"
+              required
+            />
             <button type="submit">Confirm</button>
           </Form>
         </FormContainer>
@@ -79,7 +90,8 @@ const mapDispatchToProps = dispatch => {
     withdraw: (amount, desc) => {
       dispatch({
         type: "withdraw",
-        value: amount
+        value: amount,
+        desc: desc
       });
     }
   };
